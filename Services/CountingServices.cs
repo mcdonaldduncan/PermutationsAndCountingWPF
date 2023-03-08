@@ -14,6 +14,41 @@ namespace PermutationsAndCountingWPF.Services
         Random random = new Random();
 
         /// <summary>
+        /// Given inputLength and limit, calculates permutation count assuming a set of unique elements.
+        /// Equation from class/pp :  n! / (n-r)!
+        /// </summary>
+        /// <param name="inputLength"></param>
+        /// <param name="limit"></param>
+        /// <returns></returns>
+        public int PermutationCount(int inputLength, int limit)
+        {
+            return Factorial(inputLength) / Factorial(inputLength - limit);
+        }
+
+        /// <summary>
+        /// Given character string, calculates ordered partition count
+        /// Equation from class/pp : n! / ( r1!*r2!....*rk!) 
+        /// </summary>
+        /// <param name="characters"></param>
+        /// <returns></returns>
+        public int OrderedPartitionCount(string characters)
+        {
+            return Factorial(characters.Length) / OrderedPartitionDenominator(CommonalityCounts(characters));
+        }
+
+        /// <summary>
+        /// Given inputLength and limit, calculates combnation count assuming a set of unique elements.
+        /// Equation from class/pp : n! / r!(n−r)!
+        /// </summary>
+        /// <param name="inputLength"></param>
+        /// <param name="limit"></param>
+        /// <returns></returns>
+        public int CombinationCount(int inputLength, int limit)
+        {
+            return Factorial(inputLength) / (Factorial(inputLength - limit) * Factorial(limit));
+        }
+
+        /// <summary>
         /// Generate a dictionary used to evaluate overlap of combinations
         /// given the small sample size, I believe it is almost impossible to get values assigned that cause issues
         /// but theoretically if the assigned values add up to the same total between more than a single pair of values
@@ -111,39 +146,5 @@ namespace PermutationsAndCountingWPF.Services
             return n * Factorial(n - 1);
         }
 
-        /// <summary>
-        /// Given inputLength and limit, calculates permutation count assuming a set of unique elements.
-        /// Equation from class/pp :  n! / (n-r)!
-        /// </summary>
-        /// <param name="inputLength"></param>
-        /// <param name="limit"></param>
-        /// <returns></returns>
-        public int PermutationCount(int inputLength, int limit)
-        {
-            return Factorial(inputLength) / Factorial(inputLength - limit);
-        }
-
-        /// <summary>
-        /// Given character string, calculates ordered partition count
-        /// Equation from class/pp : n! / ( r1!*r2!....*rk!) 
-        /// </summary>
-        /// <param name="characters"></param>
-        /// <returns></returns>
-        public int OrderedPartitionCount(string characters)
-        {
-            return Factorial(characters.Length) / OrderedPartitionDenominator(CommonalityCounts(characters));
-        }
-
-        /// <summary>
-        /// Given inputLength and limit, calculates combnation count assuming a set of unique elements.
-        /// Equation from class/pp : n! / r!(n−r)!
-        /// </summary>
-        /// <param name="inputLength"></param>
-        /// <param name="limit"></param>
-        /// <returns></returns>
-        public int CombinationCount(int inputLength, int limit)
-        {
-            return Factorial(inputLength) / (Factorial(inputLength - limit) * Factorial(limit));
-        }
     }
 }

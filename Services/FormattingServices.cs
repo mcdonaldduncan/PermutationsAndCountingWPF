@@ -12,7 +12,7 @@ namespace PermutationsAndCountingWPF.Services
     internal class FormattingServices
     {
         /// <summary>
-        /// Formats a list of permutations, partitions or combinations into a presentable string
+        /// Formats a list of permutations, partitions or combinations into a presentable string using a stringbuilder
         /// </summary>
         /// <param name="collection"></param>
         /// <returns></returns>
